@@ -22,7 +22,10 @@ class GamesController < ApplicationController
     cell = params[:cell].to_i
     turn = game.turn
 
-    if game.board[subgame][cell].blank?
+
+    if !game.valid_subgames.include?(subgame)
+      resp = { error: "Invalid move" }
+    elsif game.board[subgame][cell].blank?
 
       game.board[subgame][cell] = turn
       game.turn = game.turn == "X" ? "O" : "X"
@@ -31,7 +34,7 @@ class GamesController < ApplicationController
       game.save
       resp = game
     else
-      resp = { error: 'Cell occupied' }
+      resp = { error: "Cell occupied" }
     end
 
     render json: resp

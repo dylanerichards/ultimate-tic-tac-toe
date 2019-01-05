@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_01_04_193523) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: :cascade do |t|
     t.text "board", default: "--- []\n"
     t.text "valid_subgames", default: "---\n- 0\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n"
