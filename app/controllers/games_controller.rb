@@ -23,15 +23,17 @@ class GamesController < ApplicationController
     turn = game.turn
 
 
-    if !game.valid_subgames.include?(subgame)
-      resp = { error: "Invalid move" }
-    elsif game.board[subgame][cell].blank?
+    # if !game.valid_subgames.include?(subgame)
+    #   resp = { error: "Invalid move" }
+    if game.board[subgame][cell].blank?
 
       game.board[subgame][cell] = turn
       game.turn = game.turn == "X" ? "O" : "X"
       game.valid_subgames = game.valid_subgames = [cell]
-
       game.save
+
+      game.winner?
+
       resp = game
     else
       resp = { error: "Cell occupied" }
