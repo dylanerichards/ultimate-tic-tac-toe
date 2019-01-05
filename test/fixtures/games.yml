@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  board: MyString
+  winner: MyString
+  turn: MyString
+  valid_subgames: MyString
+
+two:
+  board: MyString
+  winner: MyString
+  turn: MyString
+  valid_subgames: MyString
