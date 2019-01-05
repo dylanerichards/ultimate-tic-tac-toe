@@ -15,10 +15,7 @@ class Game < ApplicationRecord
   ]
 
   def winning_boards
-    winning_boards = {
-      "X" => [],
-      "O" => []
-    }
+    winning_boards = { "X" => [], "O" => [] }
 
     self.board.each_with_index do |board, index|
       WINNING_COMBINATIONS.each do |combination|
@@ -31,17 +28,13 @@ class Game < ApplicationRecord
       end
     end
 
-
     winning_boards
   end
 
   def winner?
     winning_boards.each do |player, boards|
       WINNING_COMBINATIONS.each do |combination|
-        first_cell = boards[0]
-        second_cell = boards[1]
-        third_cell = boards[2]
-        consideration = [first_cell, second_cell, third_cell]
+        consideration = [boards[0], boards[1], boards[2]]
 
         if WINNING_COMBINATIONS.include?(consideration)
           self.winner = player
