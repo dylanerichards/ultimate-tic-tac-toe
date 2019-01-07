@@ -31,7 +31,7 @@ class Game < ApplicationRecord
     winning_boards
   end
 
-  def winner?
+  def set_winner
     winning_boards.each do |player, boards|
       WINNING_COMBINATIONS.each do |combination|
         consideration = [boards[0], boards[1], boards[2]]
@@ -61,6 +61,7 @@ class Game < ApplicationRecord
         game.turn = turn == "X" ? "O" : "X"
         game.valid_subgames = [cell]
         game.save
+        game.set_winner
       end
     elsif !valid_subgame?
       { error: "Invalid move" }
