@@ -7,7 +7,7 @@ describe Game do
     game = Game.new
 
     expect(game.board.count).to eq 9
-    expect(game.board.map(&:class))
+    expect(game.board.map(&:class).count(Array)).to eq 9
   end
 
   describe "#winning_boards" do
