@@ -9,6 +9,9 @@
 * make sure Postgres is running
 * run `rake db:create; rake db:migrate`
 
+## Running the tests
+
+* Run `rspec`
 
 ## How to play
 * Hit 'New Game' to start playing
