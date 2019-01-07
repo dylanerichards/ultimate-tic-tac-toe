@@ -20,24 +20,8 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     subgame = params[:subgame].to_i
     cell = params[:cell].to_i
-    turn = game.turn
 
-
-    if !game.valid_subgames.include?(subgame)
-      resp = { error: "Invalid move" }
-    elsif game.board[subgame][cell].blank?
-
-      game.board[subgame][cell] = turn
-      game.turn = game.turn == "X" ? "O" : "X"
-      game.valid_subgames = game.valid_subgames = [cell]
-      game.save
-
-      game.winner?
-
-      resp = game
-    else
-      resp = { error: "Cell occupied" }
-    end
+    resp = game.move(subgame, cell)
 
     render json: resp
   end

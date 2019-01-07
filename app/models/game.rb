@@ -46,6 +46,29 @@ class Game < ApplicationRecord
     self.winner
   end
 
+  def valid_subgame?(subgame)
+    valid_subgames.include?(subgame)
+  end
+
+  def cell_vacant?(cell, subgame)
+    board[subgame][cell].blank?
+  end
+
+  def move(subgame, cell)
+    if valid_subgame?(subgame) && cell_vacant?(cell, subgame)
+      tap do |game|
+        game.board[subgame][cell] = turn
+        game.turn = turn == "X" ? "O" : "X"
+        game.valid_subgames = valid_subgames = [cell]
+        game.save
+      end
+    elsif !valid_subgame?
+      { error: "Invalid move" }
+    else
+      { error: "Cell occupied" }
+    end
+  end
+
   def create_boards
     self.board = [
       ['', '', '', '', '', '', '', '', ''],
