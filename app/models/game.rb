@@ -63,7 +63,7 @@ class Game < ApplicationRecord
         game.save
         game.set_winner
       end
-    elsif !valid_subgame?
+    elsif !valid_subgame?(subgame)
       { error: "Invalid move" }
     else
       { error: "Cell occupied" }
