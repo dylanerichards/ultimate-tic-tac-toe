@@ -59,7 +59,7 @@ class Game < ApplicationRecord
       tap do |game|
         game.board[subgame][cell] = turn
         game.turn = turn == "X" ? "O" : "X"
-        game.valid_subgames = valid_subgames = [cell]
+        game.valid_subgames = [cell]
         game.save
       end
     elsif !valid_subgame?
