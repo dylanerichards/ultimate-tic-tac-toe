@@ -1,24 +1,15 @@
-# README
+# Ultimate Tic-Tac-Toe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation instructions
 
-Things you may want to cover:
+* clone this repository
+* cd into it
+* make sure you've got the gem Bundler installed
+* run `bundle` to install the project's dependencies
+* make sure Postgres is running
+* run `rake db:create; rake db:migrate`
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to play
+* Hit 'New Game' to start playing
+* Find the rules [here](http://ultimatetictactoe.creativitygames.net/)

@@ -151,10 +151,10 @@ $('#new-game').click(function() {
   $.post( "game")
     .done(function(resp) {
       if (resp.Error) {
-	alert(resp.Error);
+        alert(resp.Error);
       } else {
         game_id = resp.id;
-	display(resp);
+        display(resp);
       }
     });
 });
@@ -168,9 +168,9 @@ $('.cell').click(function() {
   $.post( "move", json)
     .done(function(resp) {
       if (resp.Error) {
-	alert(resp.Error);
+        alert(resp.Error);
       } else {
-	display(resp);
+        display(resp);
       }
     });
 });
